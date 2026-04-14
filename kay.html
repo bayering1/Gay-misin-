@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Gay Misin?</title>
+
+<!-- ⭐ SAĞ ÜST İKON (FAVICON) -->
+<link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3212/3212608.png">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    background: url("https://i.pinimg.com/736x/e4/a6/e4/e4a6e4058d44cc5e6c42da632c4b9a82.jpg")
+    no-repeat center/cover;
+
+    overflow: hidden;
+}
+
+button {
+    width: 240px;
+    height: 100px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    transition: 0.25s;
+}
+
+#yesil {
+    background: linear-gradient(45deg, #00c853, #00e676);
+}
+
+#kirmizi {
+    background: linear-gradient(45deg, #ff1744, #ff5252);
+}
+
+#sonEkran {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background: url("https://avatars.mds.yandex.net/i?id=6a42e3ff8114c0318dd296a0160cbff39ee29f73-5583010-images-thumbs&n=13")
+    no-repeat center/cover;
+
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 55px;
+    font-weight: bold;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<button id="yesil">Gay değilsin</button>
+<button id="kirmizi">GAYSİN</button>
+
+<div id="sonEkran">GAY OLDUĞUNU BİLİYORDUM</div>
+
+<script>
+let yesil = document.getElementById("yesil");
+let kirmizi = document.getElementById("kirmizi");
+let sonEkran = document.getElementById("sonEkran");
+
+let tik = 0;
+
+yesil.onclick = () => {
+    tik++;
+
+    kirmizi.style.transform = `scale(${1 + tik * 0.8})`;
+    yesil.style.transform = `scale(${1 - tik * 0.15})`;
+
+    if (tik >= 5) {
+        kirmizi.style.position = "fixed";
+        kirmizi.style.top = "0";
+        kirmizi.style.left = "0";
+        kirmizi.style.width = "100vw";
+        kirmizi.style.height = "100vh";
+        kirmizi.style.borderRadius = "0";
+        kirmizi.style.fontSize = "60px";
+
+        yesil.style.display = "none";
+    }
+};
+
+kirmizi.onclick = () => {
+    yesil.style.display = "none";
+    kirmizi.style.display = "none";
+
+    document.body.style.background = "black";
+    sonEkran.style.display = "flex";
+};
+</script>
+
+</body>
+</html>
